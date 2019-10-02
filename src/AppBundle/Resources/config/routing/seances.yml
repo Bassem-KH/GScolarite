@@ -1,0 +1,29 @@
+seances_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Seances:index" }
+    methods:  GET
+
+seances_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Seances:show" }
+    methods:  GET
+
+seances_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Seances:new" }
+    methods:  [GET, POST]
+
+
+seances_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Seances:edit" }
+    methods:  [GET, POST]
+
+seances_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Seances:delete" }
+    methods:  DELETE
+seances_show2:
+    path:     /{classe}/show2
+    defaults: { _controller: "AppBundle:Seances:show2" }
+    methods:  GET

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>SESAME</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {font-family: "Lato", sans-serif}
+    .mySlides {display: none}
+</style>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-blue-grey w3-card">
+        <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="{{ path('homepage') }}" class="w3-bar-item w3-button w3-padding-large">ACCUEIL</a>
+        <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SESAME</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hide-small">CONTACT</a>
+        <a href="{{ path('inscription_new') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DEMANDE   D'INSCRIPTION</a>
+        <a href="{{ path('inscription_etat') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ETAT DES DEMANDES </a>
+
+        <a href="{{ path('fos_user_security_login') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-display-topright" >CONNEXION</a>
+
+
+
+    </div>
+</div>
+</div>
+
+<!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+    <a href="#band" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">SESAME</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">CONTACT</a>
+
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{{asset('1.png')}}" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{{asset('2.png')}}" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{{asset('3.png')}}" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+
+        </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+        <img src="{{asset('4.png')}}" style="width:100%">
+        <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+
+        </div>
+    </div>
+
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+        <h2 class="w3-wide">SESAME</h2>
+        <p class="w3-opacity"><i>Votre partenaire pour le succés</i></p>
+        <p class="w3-justify">Notre challenge, dans un contexte où le changement s’accélère, est de former et d’accompagner des futurs cadres de grandes qualités, ayant des compétences scientifiques, techniques et sociales de haut niveau et convoités à l’échelle nationale et internationale. SESAME est soucieuse d’anticiper les besoins des acteurs économiques, d’y répondre, d’assurer l’employabilité de ses diplômés et de les insérer dans un réseau durable.</p>
+        <div class="w3-row w3-padding-32">
+            <div class="w3-half">
+
+                <img src="{{asset('5.png')}}" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
+            </div>
+
+            <div class="w3-half">
+
+                <img src="{{asset('7.png')}}" class="w3-round" alt="Random Name" style="width:90%">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- The Contact Section -->
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+        <h2 class="w3-wide w3-center">CONTACT</h2>
+
+        <div class="w3-row w3-padding-32">
+            <div class="w3-wide w3-center">
+                <i class="fa fa-map-marker" > &nbsp; ZI Chotrana I – BP 4 <br> parc technologique Elgazala – 2088 Tunisie</i> <br>
+                <i class="fa fa-phone" style="width:30px"></i> Télephone : (+ 216) 70 686 486<br>
+                <i class="fa fa-phone" style="width:30px"></i> Fax : (+ 216) 70 686 488<br>
+
+
+                <i class="fa fa-envelope" style="width:30px"> </i> Email: sesame@sesame.com.tn<br>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- End Page Content -->
+</div>
+<script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 4000);
+    }
+
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+            x.className += " w3-show";
+        } else {
+            x.className = x.className.replace(" w3-show", "");
+        }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

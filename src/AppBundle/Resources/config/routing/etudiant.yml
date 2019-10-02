@@ -1,0 +1,28 @@
+etudiant_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Etudiant:index" }
+    methods:  GET
+
+etudiant_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Etudiant:show" }
+    methods:  GET
+
+etudiant_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Etudiant:new" }
+    methods:  [GET, POST]
+
+etudiant_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Etudiant:edit" }
+    methods:  [GET, POST]
+
+etudiant_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Etudiant:delete" }
+    methods:  DELETE
+etudiant_list_classes:
+    path:     /get-classes-from-cursus
+    defaults: { _controller: "AppBundle:Etudiant:listClassesOfCursus" }
+    methods:  GET

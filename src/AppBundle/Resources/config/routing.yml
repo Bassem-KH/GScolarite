@@ -1,0 +1,4 @@
+app_cursus:
+    resource: "@AppBundle/Resources/config/routing/cursus.yml"
+    prefix:   /cursus
+

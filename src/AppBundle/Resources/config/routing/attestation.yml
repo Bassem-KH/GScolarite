@@ -1,0 +1,40 @@
+attestation_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Attestation:index" }
+    methods:  GET
+
+attestation_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Attestation:show" }
+    methods:  GET
+
+attestation_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Attestation:new" }
+    methods:  [GET, POST]
+
+attestation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Attestation:edit" }
+    methods:  [GET, POST]
+
+attestation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Attestation:delete" }
+    methods:  DELETE
+attestation_delete2:
+    path:     /{id}/delete2
+    defaults: { _controller: "AppBundle:Attestation:delete2" }
+    methods:  DELETE
+attestation_validate:
+    path: /{id}/validate
+    defaults: { _controller: "AppBundle:Attestation:validate" }
+    methods:  GET
+attestation_show2:
+    path:     /show2
+    defaults: { _controller: "AppBundle:Attestation:show2" }
+    methods:  GET
+attestation_show3:
+    path:     /{id}/show3
+    defaults: { _controller: "AppBundle:Attestation:show3" }
+    methods:  GET

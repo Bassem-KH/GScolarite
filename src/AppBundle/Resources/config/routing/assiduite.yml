@@ -1,0 +1,40 @@
+assiduite_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Assiduite:index" }
+    methods:  GET
+
+assiduite_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Assiduite:show" }
+    methods:  GET
+
+assiduite_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Assiduite:new" }
+    methods:  [GET, POST]
+
+assiduite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Assiduite:edit" }
+    methods:  [GET, POST]
+
+assiduite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Assiduite:delete" }
+    methods:  DELETE
+assiduite_list_classes:
+    path:     /get-classes-from-cursus
+    defaults: { _controller: "AppBundle:Assiduite:listClassesOfCursus" }
+    methods:  GET
+assiduite_list_etudiants:
+    path:     /get-etudiants-from-classe
+    defaults: { _controller: "AppBundle:Assiduite:listEtudiantsOfClasse" }
+    methods:  GET
+assiduite_list_matieres:
+    path:     /get-matieres-from-module
+    defaults: { _controller: "AppBundle:Assiduite:listMatieresOfModule" }
+    methods:  GET
+assiduite_show2:
+    path:     /show2
+    defaults: { _controller: "AppBundle:Assiduite:show2" }
+    methods:  GET

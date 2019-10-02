@@ -1,0 +1,110 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    acl:
+        connection: default
+    role_hierarchy:
+        ROLE_ETUDIANT: ROLE_USER
+        ROLE_ENSEIGNANT: ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_SONATA_ADMIN, ROLE_ETUDIANT, ROLE_ENSEIGNANT]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        SONATA:
+        - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
+    encoders:
+            FOS\UserBundle\Model\UserInterface: sha512
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        admin:
+            switch_user: true
+            pattern:            /admin(.*)
+            context:            user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                use_forward:    false
+                check_path:     /admin/login_check
+                failure_path:   null
+
+
+            logout:
+                path:           /admin/logout
+                target:         /
+            anonymous:          true
+
+        main:
+            pattern:             .*
+            context:             user
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /login
+                use_forward:    false
+                check_path:     /login_check
+                failure_path:   null
+                always_use_default_target_path: false
+                default_target_path: /user/test
+
+            logout:             true
+            anonymous:          true
+            # activate different ways to authenticate
+
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+            #http_basic: ~
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            #form_login: ~
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+
+    # Admin login page needs to be accessed without credential
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+    # Secured part of the site
+    # This config requires being logged for the whole site and having the admin role for the admin part.
+    # Change these rules to adapt them to your needs
+        - { path: ^/admin/, role: [ROLE_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/salle/, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/cursus, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/module, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/matiere, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/classe, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/etudiant, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/enseignant, role:  ROLE_SUPER_ADMIN }
+
+        - { path: ^/assiduite/show2, role:  ROLE_ETUDIANT }
+        - { path: ^/assiduite, role:  ROLE_ENSEIGNANT }
+
+        - { path: ^/evaluation/show2, role:  ROLE_ETUDIANT }
+        - { path: ^/evaluation, role:  ROLE_ENSEIGNANT }
+
+        - { path: ^/seances/.*/show2, role:  [ROLE_ETUDIANT,ROLE_ENSEIGNANT] }
+        - { path: ^/seances, role:  ROLE_SUPER_ADMIN }
+
+        - { path: ^/attestation/new, role:  ROLE_ETUDIANT }
+        - { path: ^/attestation/edit, role:  ROLE_ETUDIANT }
+        - { path: ^/attestation/show2, role:  ROLE_ETUDIANT }
+        - { path: ^/attestation/.*/show3, role:  ROLE_ETUDIANT }
+        - { path: ^/attestation, role:  ROLE_SUPER_ADMIN }
+
+        - { path: ^/specialite, role:  ROLE_SUPER_ADMIN }
+
+        - { path: ^/inscription/new, role:  IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription/etat, role:  IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription/.*/show2, role:  IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/inscription/index, role:  ROLE_SUPER_ADMIN }
+        - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

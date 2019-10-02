@@ -1,0 +1,122 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi: ~
+    translator: ~
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.project_dir%/var/data/data.sqlite"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
+                    ApplicationSonataUserBundle: ~
+                    AppBundle: ~
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: Application\Sonata\UserBundle\Entity\User
+    group:
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
+    from_email:
+        address: "sss703857@gmail.com"
+        sender_name: "seif"
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+sonata_user:
+    security_acl: true
+    manager_type: orm
+    class:
+        user: Application\Sonata\UserBundle\Entity\User
+        group: Application\Sonata\UserBundle\Entity\Group
+sonata_admin:
+    title: Scolarité SESAME
+    #title_logo: /bundles/sonataadmin/logo_title.png
+    templates:
+        #dashboard: '@SonataAdmin/Core/dashboard.html.twig'
+        # default global templates
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+
+        # default actions templates, should extend a global templates
+        list:    SonataAdminBundle:CRUD:list.html.twig
+        show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+
+        # other configuration options
+        search:              '@SonataAdmin/Core/search.html.twig'
+        search_result_block: '@SonataAdmin/Block/block_search_result.html.twig'
+        #dashboard:
+        # blocks:
+        # display a dashboard block
+        #- { position: left, type: sonata.admin.block.admin_list }
+    global_search:
+        empty_boxes: fade

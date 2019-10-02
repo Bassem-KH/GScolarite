@@ -1,0 +1,24 @@
+seance_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Seance:index" }
+    methods:  GET
+
+seance_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Seance:show" }
+    methods:  GET
+
+seance_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Seance:new" }
+    methods:  [GET, POST]
+
+seance_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Seance:edit" }
+    methods:  [GET, POST]
+
+seance_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Seance:delete" }
+    methods:  DELETE

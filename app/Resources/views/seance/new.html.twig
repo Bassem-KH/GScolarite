@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Seance creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('seance_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $('#appbundle_seance_cursus').change(function () {
+            var cursusSelector = $(this);
+
+            // Request the neighborhoods of the selected city.
+            $.ajax({
+                url: "{{ path('etudiant_list_classes') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    cursusid: cursusSelector.val()
+                },
+                success: function (classes) {
+                    var classeSelect = $("#appbundle_seance_classe");
+
+                    // Remove current options
+                    classeSelect.html('');
+
+                    // Empty value ...
+                    classeSelect.append('<option value> Select a classe of ' + cursusSelector.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(classes, function (key, classe) {
+                        classeSelect.append('<option value="' + classe.id + '">' + classe.name + '</option>');
+                    });
+                },
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                }
+            });
+        });
+    </script>
+{% endblock %}

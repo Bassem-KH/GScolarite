@@ -1,0 +1,9 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    <a class="d-block small mt-3" href="{{ path('fos_user_security_login') }}">Login Here</a>
+
+{% endblock fos_user_content %}

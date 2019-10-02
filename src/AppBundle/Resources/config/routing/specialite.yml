@@ -1,0 +1,24 @@
+specialite_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Specialite:index" }
+    methods:  GET
+
+specialite_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Specialite:show" }
+    methods:  GET
+
+specialite_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Specialite:new" }
+    methods:  [GET, POST]
+
+specialite_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Specialite:edit" }
+    methods:  [GET, POST]
+
+specialite_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Specialite:delete" }
+    methods:  DELETE

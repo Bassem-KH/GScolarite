@@ -1,0 +1,76 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /reset
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /admin
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+sonata_user_admin_security:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    prefix: /admin
+
+sonata_user_admin_resetting:
+    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    prefix: /admin/resetting
+app_cursus:
+    resource: "@AppBundle/Resources/config/routing/cursus.yml"
+    prefix:   /cursus
+app_matiere:
+    resource: "@AppBundle/Resources/config/routing/matiere.yml"
+    prefix:   /matiere
+app_module:
+    resource: "@AppBundle/Resources/config/routing/module.yml"
+    prefix:   /module
+app_classe:
+    resource: "@AppBundle/Resources/config/routing/classe.yml"
+    prefix:   /classe
+app_etudiant:
+    resource: "@AppBundle/Resources/config/routing/etudiant.yml"
+    prefix:   /etudiant
+app_enseignant:
+    resource: "@AppBundle/Resources/config/routing/enseignant.yml"
+    prefix:   /enseignant
+app_assiduite:
+    resource: "@AppBundle/Resources/config/routing/assiduite.yml"
+    prefix:   /assiduite
+app_evaluation:
+    resource: "@AppBundle/Resources/config/routing/evaluation.yml"
+    prefix:   /evaluation
+app_seance:
+    resource: "@AppBundle/Resources/config/routing/seances.yml"
+    prefix:   /seances
+app_attestation:
+    resource: "@AppBundle/Resources/config/routing/attestation.yml"
+    prefix:   /attestation
+app_salle:
+    resource: "@AppBundle/Resources/config/routing/salle.yml"
+    prefix:   /salle
+app_specialite:
+    resource: "@AppBundle/Resources/config/routing/specialite.yml"
+    prefix:   /specialite
+app_inscription:
+    resource: "@AppBundle/Resources/config/routing/inscription.yml"
+    prefix:   /inscription

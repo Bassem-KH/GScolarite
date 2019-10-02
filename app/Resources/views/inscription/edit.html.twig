@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscription edit</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('inscription_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+        $('#appbundle_inscription_specc').change(function () {
+            var speccSelector = $(this);
+
+            $.ajax({
+                url: "{{ path('inscrption_list_cycle') }}",
+                type: "GET",
+                dataType: "JSON",
+                data: {
+                    speccid: speccSelector.val()
+                },
+                success: function (cycles) {
+                    var cycleSelect = $("#appbundle_inscription_cycle");
+
+                    // Remove current options
+                    cycleSelect.html('');
+
+                    // Empty value ...
+                    cycleSelect.append('<option value> Sélectionner un cycle du spécialité ' + speccSelector.find("option:selected").text() + ' ...</option>');
+
+
+                    $.each(cycles, function (key, cycle) {
+                        cycleSelect.append('<option value="' + cycle.id + '">' + cycle.name + '</option>');
+                    });
+                },
+                error: function (err) {
+                    alert("An error ocurred while loading data ...");
+                }
+            });
+        });
+    </script>
+{% endblock %}

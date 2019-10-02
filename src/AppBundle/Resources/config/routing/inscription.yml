@@ -1,0 +1,36 @@
+inscription_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Inscription:index" }
+    methods:  GET
+
+inscription_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Inscription:show" }
+    methods:  GET
+inscription_show2:
+    path:     /{id}/show2
+    defaults: { _controller: "AppBundle:Inscription:show2" }
+    methods:  GET
+
+inscription_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Inscription:new" }
+    methods:  [GET, POST]
+
+inscription_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Inscription:delete" }
+    methods:  DELETE
+inscrption_list_cycle:
+    path:     /get-cycle-from-specialite
+    defaults: { _controller: "AppBundle:Inscription:listCyclesOfSpec" }
+    methods:  GET
+inscription_validate:
+    path: /{id}/validate
+    defaults: { _controller: "AppBundle:Inscription:validate" }
+    methods:  GET
+inscription_etat:
+    path: /etat
+    defaults: { _controller: "AppBundle:Inscription:etat" }
+    methods:  GET
+

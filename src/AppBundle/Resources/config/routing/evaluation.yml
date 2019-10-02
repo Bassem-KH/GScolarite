@@ -1,0 +1,45 @@
+evaluation_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Evaluation:index" }
+    methods:  GET
+
+evaluation_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Evaluation:show" }
+    methods:  GET
+
+evaluation_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Evaluation:new" }
+    methods:  [GET, POST]
+
+evaluation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Evaluation:edit" }
+    methods:  [GET, POST]
+
+evaluation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Evaluation:delete" }
+    methods:  DELETE
+evaluation_show2:
+    path:     /show2
+    defaults: { _controller: "AppBundle:Evaluation:show2" }
+    methods:  GET
+evaluation_list_module:
+    path:     /get-modules-from-cursus
+    defaults: { _controller: "AppBundle:Evaluation:listModulesOfCursus" }
+    methods:  GET
+evaluation_list_classes:
+    path:     /get-classes-from-cursus
+    defaults: { _controller: "AppBundle:Assiduite:listClassesOfCursus" }
+    methods:  GET
+evaluation_list_etudiants:
+    path:     /get-etudiants-from-classe
+    defaults: { _controller: "AppBundle:Assiduite:listEtudiantsOfClasse" }
+    methods:  GET
+evaluation_list_matieres:
+    path:     /get-matieres-from-module
+    defaults: { _controller: "AppBundle:Assiduite:listMatieresOfModule" }
+    methods:  GET
+
